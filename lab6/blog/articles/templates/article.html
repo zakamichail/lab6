@@ -1,0 +1,33 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/articles.css">
+    <title>{{post.title}}</title>
+</head>
+<body>
+    <div class="header">
+        <img src="http://isua-mtuci.ru/images/logo_mtuci.png" />
+        {% if logged %}
+        <h2><a href="/logout">Выйти из аккаунта</a></h2>
+        {% endif %}
+        {% if not logged %}
+        <h2><a href="/login">Войти</a></h2>
+        <h2><a href="/registration">Зарегистрироваться</a></h2>
+        {% endif %}
+
+    </div>
+<div class="article">
+<div class="one-post">
+    <h2 class="post-title"><a href="/article/{{ post.id }}">{{ post.title }}</a></h2>
+    <div class="article-info">
+    <div class="article-author">{{ post.author.username }}</div>
+    <div class="article-created-date">{{ post.created_date }}</div>
+    </div>
+    <p class="article-text">{{ post.get_excerptlong }}</p>
+    <a href="/">Вернуться назад</a>
+</div>
+</div>
+</body>
+</html>
