@@ -8,11 +8,17 @@
 
 </head>
 <body>
-
 <div class="header">
     <img src="http://isua-mtuci.ru/images/logo_mtuci.png" />
-</div>
+    {% if logged %}
+    <h2><a href="/logout">Выйти из аккаунта</a></h2>
+    {% endif %}
+    {% if not logged %}
+    <h2><a href="/login">Войти</a></h2>
+    <h2><a href="/registration">Зарегистрироваться</a></h2>
+    {% endif %}
 
+</div>
 <div class="archive">
     {% for post in posts %}
         <div class="one-post">
